@@ -43,7 +43,7 @@ class Vec3 {
 	 */
 	get len() {
 		// |v| = √(x^2+y^2+z^2)
-		return this.components.map(c => c * c).reduce((a, b) => a + b);
+		return Math.sqrt(this.components.map(c => c * c).reduce((a, b) => a + b));
 	}
 
 	/**
@@ -95,9 +95,9 @@ class Vec3 {
 	 */
 	prod(v) {
 		// ベクトルの外積は(x1,y1,z1)×(x2,y2,z2)=(y1z2−z1y2,z1x2−x1z2,x1y2−y1x2)
-		const x = this.y * v.z - this.z - v.y;
-		const y = this.z * v.x - this.x - v.z;
-		const z = this.x * v.y - this.y - v.x;
+		const x = this.y * v.z - this.z * v.y;
+		const y = this.z * v.x - this.x * v.z;
+		const z = this.x * v.y - this.y * v.x;
 		return new Vec3(x, y, z);
 	}
 
@@ -113,7 +113,7 @@ class Vec3 {
 		// V1→V2とV1→V3のベクトルを取得
 		const v12 = v2.add(v1_inv);
 		const v13 = v3.add(v1_inv);
-		// ベクトルの面積は、|V12×V23|/2で得られる
+		// ベクトルの面積は、|V12×V13|/2で得られる
 		return v12.prod(v13).len / 2;
 	}
 }
