@@ -3,7 +3,27 @@
 <head>
     <meta charset="UTF-8">
     <title>Infovis2019 W02 Task1</title>
+    <script src="src/vec3.js"></script>
+    <script>
+      document.addEventListener("DOMContentLoaded", () => {
+        const vec = new Vec3(5, 4, 8);
+        const span_min = document.getElementById("v_min");
+        const span_mid = document.getElementById("v_mid");
+        const span_max = document.getElementById("v_max");
+
+        span_min.textContent = vec.min().toString();
+        span_mid.textContent = vec.mid().toString();
+        span_max.textContent = vec.max().toString();
+      });
+    </script>
 </head>
 <body>
+<h1>W02 Task1</h1>
+<p>Vector v := (5,4,8)</p>
+<ul>
+    <li>the min value of components of v is: <span id="v_min"></span></li>
+    <li>the mid value of components of v is: <span id="v_mid"></span></li>
+    <li>the max value of components of v is: <span id="v_max"></span></li>
+</ul>
 </body>
 </html>
