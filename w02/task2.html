@@ -4,6 +4,30 @@
     <meta charset="UTF-8">
     <title>Infovis2019 W02 Task2</title>
     <link rel="stylesheet" href="task2.css">
+    <script src="src/vec3.js"></script>
+    <script>
+      document.addEventListener("DOMContentLoaded", () => {
+        const button_calc = document.getElementById("calc");
+        const span_result = document.getElementById("result");
+        // 計算ボタンを押した際の処理を登録
+        button_calc.addEventListener("click", event => {
+          const [v1, v2, v3] = [1, 2, 3]
+            // 頂点ごとのinput要素のidを生成して値を取得
+            .map(n =>
+              ["x", "y", "z"]
+                .map(dim => `v${n}_${dim}`)
+                .map(id => +document.getElementById(id).value)
+            )
+            // 値から3つのベクトルを生成
+            .map(components => (new Vec3(...components)));
+          // 結果を計算して表示
+          const result = Vec3.AreaOfTriangle(v1, v2, v3);
+          span_result.textContent = result.toString();
+          // submitイベントによるページの更新を抑止
+          event.preventDefault();
+        });
+      });
+    </script>
 </head>
 <body>
 <h1>W02 Task2</h1>
@@ -59,5 +83,6 @@
         <button type="submit" id="calc">Calc Area of Triangle</button>
     </p>
 </form>
+<p>result: <span id="result"></span></p>
 </body>
 </html>
