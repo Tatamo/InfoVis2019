@@ -1,3 +1,5 @@
+**他の講義と時間が被ったので履修しません**
+
 # infovis2019
 
 Submissions for my lecture
